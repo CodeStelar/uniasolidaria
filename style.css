@@ -22,17 +22,38 @@ body {
   border-bottom-right-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-.header-topo .logo-header { width: auto; }
-.header-topo .logo-uniao { max-height: 80px; }
+
+.header-topo .logo-header {
+  width: auto;
+}
+
+.header-topo .logo-uniao {
+  max-height: 80px;
+}
+
 .header-topo .logo-obra {
   max-height: 100px;
   border: 2px solid #00bfff;
   border-radius: 6px;
   padding: 2px;
 }
-.header-titulo { text-align: center; flex: 1; }
-.header-titulo h1 { margin: 0; font-size: 2.2em; font-weight: 700; }
-.header-titulo p { margin-top: 5px; font-size: 1.1em; font-weight: 400; }
+
+.header-titulo {
+  text-align: center;
+  flex: 1;
+}
+
+.header-titulo h1 {
+  margin: 0;
+  font-size: 2.2em;
+  font-weight: 700;
+}
+
+.header-titulo p {
+  margin-top: 5px;
+  font-size: 1.1em;
+  font-weight: 400;
+}
 
 /* ===== Main ===== */
 main {
@@ -40,6 +61,18 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* ===== Seção introdutória ===== */
+.intro-campanha {
+  max-width: 950px;
+  margin-bottom: 40px;
+  text-align: center;
+  padding: 15px;
+  background: #e0f7ff;
+  border-radius: 12px;
+  border: 3px solid #0077a3;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
 
 /* ===== Frase de Destaque ===== */
@@ -76,6 +109,7 @@ main {
   margin-bottom: 20px;
   width: 100%;
 }
+
 .premios-container li {
   position: relative;
   padding-left: 12px;
@@ -84,6 +118,7 @@ main {
   font-size: 1rem;
   text-align: left;
 }
+
 .premios-container li::before {
   content: "";
   position: absolute;
@@ -95,6 +130,7 @@ main {
   border-radius: 50%;
   background: linear-gradient(135deg, #007bff, #00c6ff);
 }
+
 .premios-img {
   max-width: 540px;
   height: auto;
@@ -114,6 +150,7 @@ main {
   max-width: 950px;
   gap: 30px;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -130,11 +167,17 @@ form {
   box-sizing: border-box;
   width: 100%;
 }
+
 form input {
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
+  padding: 8px 10px;
+  border: 2px solid #0077a3;
+  border-radius: 6px;
+  font-size: 1em;
 }
+
 .form-titulo {
   display: flex;
   align-items: center;
@@ -142,6 +185,7 @@ form input {
   gap: 8px;
   margin-bottom: 10px;
 }
+
 form h3 {
   text-align: center;
   color: #0077a3;
@@ -149,7 +193,10 @@ form h3 {
   margin: 0;
   font-size: 1.2em;
 }
-.logo-form-esq, .logo-form-dir { max-height: 40px; }
+
+.logo-form-esq, .logo-form-dir {
+  max-height: 40px;
+}
 
 /* ===== Campanha Online ===== */
 .campanha-principal {
@@ -164,10 +211,12 @@ form h3 {
   transition: all 0.3s ease;
   margin-top: 20px;
 }
+
 .campanha-principal:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
+
 .titulo-campanha-bloco {
   display: flex;
   flex-direction: column;
@@ -175,7 +224,12 @@ form h3 {
   gap: 8px;
   margin-bottom: 20px;
 }
-.logo-campanha-grande { height: 50px; width: auto; }
+
+.logo-campanha-grande {
+  height: 50px;
+  width: auto;
+}
+
 .titulo-campanha-bloco h2 {
   margin: 0;
   font-size: 1.8em;
@@ -186,6 +240,11 @@ form h3 {
 }
 
 /* ===== Botões ===== */
+button, .btn-oficial, .btn-copiar, .btn-whats {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
 .btn-oficial {
   display: inline-block;
   width: 100%;
@@ -195,14 +254,13 @@ form h3 {
   color: #fff;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   font-weight: 600;
   font-size: 1em;
   text-align: center;
   text-decoration: none;
-  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
 }
-button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
+
+button:hover, .btn-oficial:hover, .btn-whats:hover, .btn-copiar:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
@@ -215,6 +273,7 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
   min-height: 18px;
   display: block;
 }
+
 .success-msg {
   color: #28a745;
   font-size: 0.85em;
@@ -234,6 +293,7 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
   text-align: center;
   transition: none;
 }
+
 .sobre-obra-container h2, .sobre-obra-container h3 {
   font-weight: 700;
   margin-top: 30px;
@@ -243,7 +303,8 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.sobre-obra p {
+
+.sobre-obra-container p {
   font-weight: 400;
   color: #4a3f28;
   margin-bottom: 18px;
@@ -252,8 +313,23 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
 }
 
 /* ===== Imagens da Obra ===== */
-.obra-principal { max-width: 600px; height: auto; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); margin: 20px auto; display: block; }
-.obra-secundaria { max-width: 500px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 15px auto; display: block; }
+.obra-principal {
+  max-width: 600px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  display: block;
+}
+
+.obra-secundaria {
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 15px auto;
+  display: block;
+}
 
 /* ===== Galeria de Valores ===== */
 .valores-galeria {
@@ -263,6 +339,7 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
   justify-items: center;
   margin: 20px 0;
 }
+
 .valores-galeria img {
   width: 100%;
   max-width: 180px;
@@ -276,6 +353,7 @@ ul {
   padding-left: 0;
   margin: 0 0 15px 0;
 }
+
 ul li {
   display: flex;
   align-items: center;
@@ -285,6 +363,7 @@ ul li {
   margin-bottom: 8px;
   text-align: left;
 }
+
 ul li::before {
   content: "•";
   font-size: 1.2em;
@@ -306,6 +385,7 @@ ul li::before {
   margin: 20px auto;
   max-width: 700px;
 }
+
 .btn-copiar {
   background-color: #007bff;
   color: white;
@@ -316,7 +396,9 @@ ul li::before {
   cursor: pointer;
   margin-top: 10px;
 }
+
 .btn-copiar:hover { background-color: #0069d9; }
+
 .btn-whats {
   background-color: #25D366;
   color: white;
@@ -328,6 +410,7 @@ ul li::before {
   margin-top: 15px;
   display: inline-block;
 }
+
 .btn-whats:hover { background-color: #1ebe5d; }
 
 /* ===== Footer ===== */
@@ -347,30 +430,27 @@ footer {
   form, .campanha-principal { max-width: 90%; }
   .valores-galeria { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media screen and (max-width: 700px) {
   .header-topo { flex-direction: column; gap: 10px; text-align: center; }
   .logo-header { max-height: 50px; }
   .valores-galeria { grid-template-columns: 1fr; }
 }
+
 @media screen and (max-width: 600px) {
-  /* Header */
   .header-titulo h1 { font-size: 1.5em; }
   .header-titulo p { font-size: 0.95em; }
-  /* Frase destaque */
   .frase-destaque { font-size: 1.2em; padding: 15px 20px; }
-  /* Prêmios */
   .premios-container { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
   .premios-container p { font-size: 1.2em; font-weight: bold; }
   .premios-container ul { padding: 0; margin: 0 auto 10px auto; list-style: none; text-align: center; }
   .premios-container li { padding-left: 18px; margin: 6px 0; font-size: 0.95em; display: inline-block; text-align: left; }
   .premios-container li::before { font-size: 1.2em; }
   .premios-img { max-width: 95%; height: auto; margin: 12px auto 0 auto; display: block; }
-  /* Campanha Principal */
   .campanha-principal { max-width: 90%; margin: 0 auto; padding: 15px; font-size: 0.9em; text-align: center; }
   .campanha-principal h2 { font-size: 1.2em; }
   .campanha-principal p { font-size: 0.9em; margin-bottom: 12px; }
   .campanha-principal .btn-oficial { font-size: 0.85em; padding: 10px; width: 90%; max-width: 260px; margin: 10px auto 0 auto; text-align: center; }
 }
-
 
 
