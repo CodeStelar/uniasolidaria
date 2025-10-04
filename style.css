@@ -250,6 +250,28 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
   text-align: center;
 }
 
+/* ===== Imagens da Obra ===== */
+.obra-principal {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  margin: 10px auto;
+  display: block;
+}
+
+.obra-secundaria {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  object-fit: cover;
+  margin: 8px;
+}
+
+
 /* ===== Responsividade ===== */
 @media screen and (max-width: 950px) {
   .form-campanha-container {
@@ -286,3 +308,4 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
     display: block;
   }
 }
+
