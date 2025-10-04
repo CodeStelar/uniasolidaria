@@ -1,3 +1,4 @@
+/* ===== Fonte Global ===== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 body {
@@ -21,32 +22,17 @@ body {
   border-bottom-right-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-.header-topo .logo-header {
-  width: auto;
-}
-.header-topo .logo-uniao {
-  max-height: 80px;
-}
+.header-topo .logo-header { width: auto; }
+.header-topo .logo-uniao { max-height: 80px; }
 .header-topo .logo-obra {
   max-height: 100px;
   border: 2px solid #00bfff;
   border-radius: 6px;
   padding: 2px;
 }
-.header-titulo {
-  text-align: center;
-  flex: 1;
-}
-.header-titulo h1 {
-  margin: 0;
-  font-size: 2.2em;
-  font-weight: 700;
-}
-.header-titulo p {
-  margin-top: 5px;
-  font-size: 1.1em;
-  font-weight: 400;
-}
+.header-titulo { text-align: center; flex: 1; }
+.header-titulo h1 { margin: 0; font-size: 2.2em; font-weight: 700; }
+.header-titulo p { margin-top: 5px; font-size: 1.1em; font-weight: 400; }
 
 /* ===== Main ===== */
 main {
@@ -68,6 +54,7 @@ main {
   border: 3px solid #0077a3;
   background: #e0f7ff;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: none;
 }
 
 /* ===== Etapas ===== */
@@ -80,20 +67,40 @@ main {
   align-items: center;
 }
 
-/* ===== Prêmios ===== */
+/* ===== Lista de prêmios ===== */
 .premios-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
   margin-bottom: 20px;
   width: 100%;
-  gap: 15px;
+}
+.premios-container li {
+  position: relative;
+  padding-left: 12px;
+  margin-bottom: 6px;
+  line-height: 1.5;
+  font-size: 1rem;
+  text-align: left;
+}
+.premios-container li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
 }
 .premios-img {
   max-width: 540px;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-top: 0;
 }
 
 /* ===== Formulário ===== */
@@ -126,6 +133,7 @@ form {
 form input {
   box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
 }
 .form-titulo {
   display: flex;
@@ -141,9 +149,7 @@ form h3 {
   margin: 0;
   font-size: 1.2em;
 }
-.logo-form-esq, .logo-form-dir {
-  max-height: 40px;
-}
+.logo-form-esq, .logo-form-dir { max-height: 40px; }
 
 /* ===== Campanha Online ===== */
 .campanha-principal {
@@ -155,7 +161,12 @@ form h3 {
   padding: 25px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
   margin-top: 20px;
+}
+.campanha-principal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 .titulo-campanha-bloco {
   display: flex;
@@ -164,10 +175,7 @@ form h3 {
   gap: 8px;
   margin-bottom: 20px;
 }
-.logo-campanha-grande {
-  height: 50px;
-  width: auto;
-}
+.logo-campanha-grande { height: 50px; width: auto; }
 .titulo-campanha-bloco h2 {
   margin: 0;
   font-size: 1.8em;
@@ -224,9 +232,9 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
   max-width: 950px;
   margin: 30px auto;
   text-align: center;
+  transition: none;
 }
-.sobre-obra-container h2,
-.sobre-obra-container h3 {
+.sobre-obra-container h2, .sobre-obra-container h3 {
   font-weight: 700;
   margin-top: 30px;
   margin-bottom: 20px;
@@ -244,93 +252,125 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
 }
 
 /* ===== Imagens da Obra ===== */
-.obra-principal {
-  width: 100%;
-  max-width: 650px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-  margin: 10px auto;
-  display: block;
+.obra-principal { max-width: 600px; height: auto; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); margin: 20px auto; display: block; }
+.obra-secundaria { max-width: 500px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 15px auto; display: block; }
+
+/* ===== Galeria de Valores ===== */
+.valores-galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  justify-items: center;
+  margin: 20px 0;
 }
-.obra-secundaria {
+.valores-galeria img {
   width: 100%;
-  max-width: 360px;
-  height: auto;
+  max-width: 180px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== Bullets ===== */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 15px 0;
+}
+ul li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+  color: #4a3f28;
+  margin-bottom: 8px;
+  text-align: left;
+}
+ul li::before {
+  content: "•";
+  font-size: 1.2em;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== Caixinha de mensagem ===== */
+.caixinha-mensagem {
+  background: linear-gradient(135deg, #87ceeb, #00bfff);
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-align: center;
+  padding: 25px 35px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  margin: 20px auto;
+  max-width: 700px;
+}
+.btn-copiar {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.btn-copiar:hover { background-color: #0069d9; }
+.btn-whats {
+  background-color: #25D366;
+  color: white;
+  font-weight: bold;
+  padding: 12px 18px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-  object-fit: cover;
-  margin: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  margin-top: 15px;
+  display: inline-block;
+}
+.btn-whats:hover { background-color: #1ebe5d; }
+
+/* ===== Footer ===== */
+footer {
+  background: #0077a3;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.9em;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 /* ===== Responsividade ===== */
 @media screen and (max-width: 950px) {
-  .form-campanha-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  form, .campanha-principal {
-    max-width: 90%;
-  }
-  .premios-container {
-    gap: 12px;
-  }
+  .form-campanha-container { flex-direction: column; align-items: center; }
+  form, .campanha-principal { max-width: 90%; }
+  .valores-galeria { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media screen and (max-width: 700px) {
-  .header-topo {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-  .logo-header {
-    max-height: 50px;
-  }
-  .header-titulo h1 {
-    font-size: 1.8em;
-  }
-  .header-titulo p {
-    font-size: 1em;
-  }
-  .frase-destaque {
-    font-size: 1.4em;
-    padding: 15px 20px;
-  }
-  .sobre-obra-container h2,
-  .sobre-obra-container h3 {
-    font-size: 1.5em;
-  }
-  .obra-principal {
-    max-width: 90%;
-  }
-  .obra-secundaria {
-    max-width: 48%;
-  }
+  .header-topo { flex-direction: column; gap: 10px; text-align: center; }
+  .logo-header { max-height: 50px; }
+  .valores-galeria { grid-template-columns: 1fr; }
+}
+@media screen and (max-width: 600px) {
+  /* Header */
+  .header-titulo h1 { font-size: 1.5em; }
+  .header-titulo p { font-size: 0.95em; }
+  /* Frase destaque */
+  .frase-destaque { font-size: 1.2em; padding: 15px 20px; }
+  /* Prêmios */
+  .premios-container { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+  .premios-container p { font-size: 1.2em; font-weight: bold; }
+  .premios-container ul { padding: 0; margin: 0 auto 10px auto; list-style: none; text-align: center; }
+  .premios-container li { padding-left: 18px; margin: 6px 0; font-size: 0.95em; display: inline-block; text-align: left; }
+  .premios-container li::before { font-size: 1.2em; }
+  .premios-img { max-width: 95%; height: auto; margin: 12px auto 0 auto; display: block; }
+  /* Campanha Principal */
+  .campanha-principal { max-width: 90%; margin: 0 auto; padding: 15px; font-size: 0.9em; text-align: center; }
+  .campanha-principal h2 { font-size: 1.2em; }
+  .campanha-principal p { font-size: 0.9em; margin-bottom: 12px; }
+  .campanha-principal .btn-oficial { font-size: 0.85em; padding: 10px; width: 90%; max-width: 260px; margin: 10px auto 0 auto; text-align: center; }
 }
 
-@media screen and (max-width: 600px) {
-  .premios-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
-  .premios-img {
-    max-width: 95%;
-    height: auto;
-    margin: 12px auto 0 auto;
-    display: block;
-  }
-  .form-titulo h3 {
-    font-size: 1em;
-  }
-  .campanha-principal {
-    max-width: 95%;
-    padding: 20px;
-  }
-  .obra-secundaria {
-    max-width: 95%;
-  }
-}
 
 
