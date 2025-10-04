@@ -68,7 +68,6 @@ main {
   border: 3px solid #0077a3;
   background: #e0f7ff;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  transition: none;
 }
 
 /* ===== Etapas ===== */
@@ -81,13 +80,14 @@ main {
   align-items: center;
 }
 
-/* ===== Prêmios - Atualizado ===== */
+/* ===== Prêmios ===== */
 .premios-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
   width: 100%;
+  gap: 15px;
 }
 .premios-img {
   max-width: 540px;
@@ -126,7 +126,6 @@ form {
 form input {
   box-sizing: border-box;
   width: 100%;
-  max-width: 100%;
 }
 .form-titulo {
   display: flex;
@@ -156,12 +155,7 @@ form h3 {
   padding: 25px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: none;
   margin-top: 20px;
-}
-.campanha-principal:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 .titulo-campanha-bloco {
   display: flex;
@@ -229,7 +223,6 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   max-width: 950px;
   margin: 30px auto;
-  transition: none;
   text-align: center;
 }
 .sobre-obra-container h2,
@@ -260,7 +253,6 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
   margin: 10px auto;
   display: block;
 }
-
 .obra-secundaria {
   width: 100%;
   max-width: 360px;
@@ -271,7 +263,6 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
   margin: 8px;
 }
 
-
 /* ===== Responsividade ===== */
 @media screen and (max-width: 950px) {
   .form-campanha-container {
@@ -281,7 +272,11 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
   form, .campanha-principal {
     max-width: 90%;
   }
+  .premios-container {
+    gap: 12px;
+  }
 }
+
 @media screen and (max-width: 700px) {
   .header-topo {
     flex-direction: column;
@@ -291,9 +286,28 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
   .logo-header {
     max-height: 50px;
   }
+  .header-titulo h1 {
+    font-size: 1.8em;
+  }
+  .header-titulo p {
+    font-size: 1em;
+  }
+  .frase-destaque {
+    font-size: 1.4em;
+    padding: 15px 20px;
+  }
+  .sobre-obra-container h2,
+  .sobre-obra-container h3 {
+    font-size: 1.5em;
+  }
+  .obra-principal {
+    max-width: 90%;
+  }
+  .obra-secundaria {
+    max-width: 48%;
+  }
 }
 
-/* ===== Prêmios Mobile - Atualizado ===== */
 @media screen and (max-width: 600px) {
   .premios-container {
     flex-direction: column;
@@ -307,5 +321,16 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
     margin: 12px auto 0 auto;
     display: block;
   }
+  .form-titulo h3 {
+    font-size: 1em;
+  }
+  .campanha-principal {
+    max-width: 95%;
+    padding: 20px;
+  }
+  .obra-secundaria {
+    max-width: 95%;
+  }
 }
+
 
