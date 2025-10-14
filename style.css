@@ -84,38 +84,25 @@ main {
 /* ===== Lista de prêmios ===== */
 .premios-container {
     display: flex;
-    justify-content: space-between; /* lista à esquerda, imagem à direita */
-    align-items: flex-end; /* alinhados pela base */
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
     margin-bottom: 20px;
     width: 100%;
+    text-align: center;
 }
-
-.premios-container li {
-    position: relative;
-    padding-left: 12px;
-    margin-bottom: 6px;
-    line-height: 1.5;
-    font-size: 1rem;
-    text-align: left;
-}
-.premios-container li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #007bff, #00c6ff);
+.premios-container p {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #0077a3;
 }
 .premios-img {
-    max-width: 540px;
+    max-width: 450px; /* aumentei um tiquinho */
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin-top: 0;
+    margin-top: 10px;
+    display: block;
 }
 
 /* ===== Formulário ===== */
@@ -182,8 +169,8 @@ form h3 {
     margin-top: 20px;
 }
 .campanha-principal:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 .titulo-campanha-bloco {
     display: flex;
@@ -210,7 +197,7 @@ form h3 {
     display: inline-block;
     width: 100%;
     margin-top: 10px;
-    padding: 8px 10px;
+    padding: 10px 8px;
     background: linear-gradient(90deg, #0077a3, #00bfff);
     color: #fff;
     border: none;
@@ -220,11 +207,48 @@ form h3 {
     font-size: 1em;
     text-align: center;
     text-decoration: none;
-    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    line-height: 1.3;
+    transition: none;
 }
-button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+.btn-oficial:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* ===== WhatsApp verde ===== */
+.btn-whats {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 8px;
+    background-color: #25D366;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1em;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.3;
+    transition: none;
+}
+.btn-whats:hover {
+    background-color: #25D366;
+    color: #fff;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ===== Etapa 2 PIX ===== */
+#etapa2 {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+#etapa2.show {
+    display: flex;
 }
 
 /* ===== Mensagens ===== */
@@ -252,7 +276,7 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
     max-width: 950px;
     margin: 30px auto;
     transition: none;
-    text-align: center; /* centraliza todo o conteúdo */
+    text-align: center;
 }
 .sobre-obra-container h2,
 .sobre-obra-container h3 {
@@ -264,7 +288,7 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.sobre-obra p {
+.sobre-obra-container p {
     font-weight: 400;
     color: #4a3f28;
     margin-bottom: 18px;
@@ -272,37 +296,22 @@ button:hover, .btn-oficial:hover, .whatsapp-btn:hover {
     text-align: center;
 }
 
+/* ===== Parágrafo de Contato ===== */
+.contato-obra {
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.5;
+    font-size: 1em;
+}
+
 /* ===== Imagens da Obra ===== */
-.obra-principal {
+.obra-principal, .obra-secundaria {
     max-width: 600px;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.1);
     margin: 20px auto;
     display: block;
-}
-.obra-secundaria {
-    max-width: 500px;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin: 15px auto;
-    display: block;
-}
-
-/* ===== Galeria de Valores ===== */
-.valores-galeria {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    justify-items: center;
-    margin: 20px 0;
-}
-.valores-galeria img {
-    width: 100%;
-    max-width: 180px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 /* ===== Bullets ===== */
@@ -318,7 +327,8 @@ ul li {
     font-weight: 400;
     color: #4a3f28;
     margin-bottom: 8px;
-    text-align: left;
+    text-align: center;
+    justify-content: center;
 }
 ul li::before {
     content: "•";
@@ -328,45 +338,21 @@ ul li::before {
     -webkit-text-fill-color: transparent;
 }
 
-/* ===== Caixinha de mensagem ===== */
-.caixinha-mensagem {
-    background: linear-gradient(135deg, #87ceeb, #00bfff);
-    color: #fff;
-    font-size: 1.5em;
-    font-weight: 600;
-    text-align: center;
-    padding: 25px 35px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    margin: 20px auto;
-    max-width: 700px;
+/* ===== Ícones de Contato e Redes Sociais ===== */
+.icones-sociais {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
 }
-.btn-copiar {
-  background-color: #007bff;
-  color: white;
-  font-weight: bold;
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
+.icones-sociais a {
+    font-size: 2rem;
+    color: #0077a3;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
-.btn-copiar:hover {
-  background-color: #0069d9;
-}
-.btn-whats {
-  background-color: #25D366;
-  color: white;
-  font-weight: bold;
-  padding: 12px 18px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 16px;
-  margin-top: 15px;
-  display: inline-block;
-}
-.btn-whats:hover {
-  background-color: #1ebe5d;
+.icones-sociais a:hover {
+    color: #00bfff;
+    transform: scale(1.2);
 }
 
 /* ===== Footer ===== */
@@ -389,9 +375,6 @@ footer {
     form, .campanha-principal {
         max-width: 90%;
     }
-    .valores-galeria {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 @media screen and (max-width: 700px) {
     .header-topo {
@@ -402,245 +385,72 @@ footer {
     .logo-header {
         max-height: 50px;
     }
-    .valores-galeria {
-        grid-template-columns: 1fr;
-    }
 }
-/* ===== Centralizar listas de Valores e Atividades ===== */
-.valores-galeria ul,
-.atividades-galeria ul,
-.sobre-obra-container ul {
-    text-align: center;
-    padding-left: 0;
-}
-
-.valores-galeria li,
-.atividades-galeria li,
-.sobre-obra-container ul li {
-    justify-content: center; /* centraliza bullets + texto */
-    text-align: center;
-}
-
-/* ===== Ícones de Contato e Redes Sociais ===== */
-.icones-sociais {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-}
-
-.icones-sociais a {
-    font-size: 2rem;
-    color: #0077a3; /* azul padrão */
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.icones-sociais a:hover {
-    color: #00bfff; /* azul claro no hover */
-    transform: scale(1.2);
-}
-
-/* ===== Ajustes extras para mobile ===== */
-@media screen and (max-width: 600px) {
-  /* Header */
-  .header-titulo h1 {
-    font-size: 1.5em;
-  }
-  .header-titulo p {
-    font-size: 0.95em;
+/* ===== RESPONSIVIDADE PARA CELULAR ===== */
+@media (max-width: 768px) {
+  .sobre-obra-container {
+    padding: 10px;
+    font-size: 16px;
   }
 
-  /* Frase destaque */
+  .sobre-obra-container h2,
+  .sobre-obra-container h3 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .sobre-obra-container p,
+  .sobre-obra-container ul {
+    font-size: 0.95rem; /* mais compacto */
+    line-height: 1.4;
+    text-align: justify;
+  }
+
+  .sobre-obra-container ul {
+    padding-left: 20px;
+  }
+
+  .sobre-obra-container div[style*="display: flex"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .obra-principal,
+  .obra-secundaria {
+    width: 100% !important;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .form-campanha-container form,
+  .campanha-principal {
+    width: 100%;
+  }
+
+  .icones-sociais a {
+    margin: 0 10px;
+    font-size: 24px;
+  }
+
+  /* Parágrafo de contato mais compacto */
+  .contato-obra {
+    font-size: 0.9em;
+    line-height: 1.2;
+  }
+
+  /* Frase de destaque menor no celular */
   .frase-destaque {
-    font-size: 1.2em;
+    font-size: 1.3em;
     padding: 15px 20px;
   }
 
-  /* ===== Prêmios ===== */
-  .premios-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .premios-container p {
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-
-  .premios-container ul {
-    padding: 0;
-    margin: 0 auto 10px auto;
-    list-style: none; /* remove bullets padrão */
-    text-align: center;
-  }
-
-  .premios-container li {
-    position: relative;
-    padding-left: 18px; /* espaço pro bullet customizado */
-    margin: 6px 0;
-    font-size: 0.95em;
-    display: inline-block; /* centraliza lista */
-    text-align: left; /* mantém alinhamento do texto */
-  }
-
-  .premios-container li::before {
-    content: "•"; /* bullet customizado */
-    position: absolute;
-    left: 0;
-    color: #0077a3;
-    font-size: 1.2em;
-    line-height: 1;
-  }
-
+  /* Prêmios levemente maiores no celular */
   .premios-img {
-    max-width: 95%;
-    height: auto;
-    margin: 12px auto 0 auto;
-    display: block;
-  }
-
-  /* ===== Campanha Principal ===== */
-  .campanha-principal {
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 15px;
-    font-size: 0.9em;
-    text-align: center; /* centraliza todo o bloco */
-  }
-
-  .campanha-principal h2 {
-    font-size: 1.2em;
-    text-align: center;
-  }
-
-  .campanha-principal p {
-    font-size: 0.9em;
-    text-align: center;
-    margin-bottom: 12px;
-  }
-
-  .campanha-principal .btn-oficial {
-    font-size: 0.85em;
-    padding: 10px;
-    width: 90%; /* diminui para não vazar da caixa */
-    max-width: 260px;
-    display: block;
-    margin: 10px auto 0 auto;
-    text-align: center;
-  }
-
-  /* ===== Atividades e Valores (Bullets) ===== */
-  .sobre-obra-container ul {
-    list-style: none !important;
-    padding-left: 0 !important;
-    margin-left: 0 !important;
-  }
-
-  .sobre-obra-container li {
-    position: relative;
-    padding-left: 18px;
-    margin: 4px 0;
-    font-size: 0.95em;
-    line-height: 1.4em;
-  }
-
-  .sobre-obra-container li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: #0077a3;
-    font-size: 1em;
-  }
-
-  .sobre-obra-container ul ul li::before {
-    font-size: 0.8em;
-    color: #555;
-  }
-
-  .sobre-obra-container ul ul ul li::before {
-    font-size: 0.7em;
-    color: #999;
-  }
-
-  /* ===== História / Sobre a Obra ===== */
-  .sobre-obra-container {
-    padding: 10px;
-  }
-
-  .sobre-obra-container h2 {
-    font-size: 1.3em;
-    text-align: center;
-  }
-
-  .sobre-obra-container p {
-    font-size: 0.9em;
-    line-height: 1.5;
-    margin-bottom: 12px;
-    text-align: center;
-  }
-
-  .sobre-obra-container img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 10px auto;
-    border-radius: 10px;
-  }
-
-  /* ===== Eventos ===== */
-  .eventos-container {
-    padding: 10px;
-    text-align: center;
-  }
-
-  .eventos-container h2 {
-    font-size: 1.3em;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-
-  .eventos-container p {
-    font-size: 0.9em;
-    line-height: 1.5;
-    margin-bottom: 12px;
-    text-align: center;
-  }
-
-  .eventos-container img {
-    max-width: 100%;
-    height: auto;
-    margin: 10px auto;
-    display: block;
-    border-radius: 8px;
-  }
-
-  /* ===== Centralizar Missão, Visão, Atividades ===== */
-  .missao-container h2,
-  .visao-container h2,
-  .atividades-container h2 {
-    text-align: center !important;
-  }
-
-  .missao-container p,
-  .visao-container p,
-  .atividades-container p {
-    text-align: center !important;
-  }
-
-  /* Botões gerais */
-  .btn-oficial,
-  .btn-whats,
-  .btn-copiar {
-    font-size: 0.95em;
-    padding: 10px;
+    max-width: 380px;
   }
 }
-
-
-
 
 
 
