@@ -73,8 +73,15 @@
           <span class="error-msg" id="error-estado"></span>
 
           <label for="quantidade">Quantidade de cupons (R$10 cada):</label>
-          <input type="number" id="quantidade" min="1" max="50" value="1" />
+
+          <div class="qty" data-target="#quantidade">
+            <button class="qty-btn" type="button" aria-label="Diminuir" id="qtyDec">‹</button>
+            <input class="qty-input" type="number" id="quantidade" min="1" max="50" value="1" inputmode="numeric" pattern="[0-9]*"/>
+            <button class="qty-btn" type="button" aria-label="Aumentar" id="qtyInc">›</button>
+          </div>
+
           <span class="error-msg" id="error-quantidade"></span>
+
 
           <button type="submit">Próximo</button>
         </form>
@@ -225,68 +232,7 @@
   </footer>
 
   <!-- ===== SCRIPT ===== -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const ticketForm = document.getElementById("ticketForm");
-      if (ticketForm) {
-        ticketForm.addEventListener("submit", function (event) {
-          event.preventDefault();
-
-          const nome = document.getElementById("nome").value.trim();
-          const cpf = document.getElementById("cpf").value.trim();
-          const telefone = document.getElementById("telefone").value.trim();
-          const cidade = document.getElementById("cidade").value.trim();
-          const estado = document.getElementById("estado").value.toUpperCase();
-          const quantidade = parseInt(document.getElementById("quantidade").value.trim(), 10) || 0;
-
-          document.querySelectorAll(".error-msg").forEach(el => el.innerText = "");
-
-          let isValid = true;
-          function setError(id, message) {
-            document.getElementById(id).innerText = message;
-            isValid = false;
-          }
-
-          if (nome.length < 3) setError("error-nome", "Informe um nome válido.");
-          if (!/^(\d{3}\.?\d{3}\.?\d{3}-?\d{2}|\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2})$/.test(cpf)) setError("error-cpf", "CPF/CNPJ inválido.");
-          if (!/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/.test(telefone)) setError("error-telefone", "Telefone inválido.");
-          if (cidade.length < 2) setError("error-cidade", "Informe sua cidade.");
-          if (!/^[A-Z]{2}$/.test(estado)) setError("error-estado", "UF inválido.");
-          if (!Number.isInteger(quantidade) || quantidade < 1 || quantidade > 50) setError("error-quantidade", "Quantidade entre 1 e 50.");
-
-          if (!isValid) return;
-
-          const valorTotal = quantidade * 10;
-          document.getElementById("valorTotal").innerText = valorTotal;
-
-          const mensagem = `Olá! Quero confirmar a compra de ${quantidade} cupom(ns) físicos no valor total de R$${valorTotal}, em apoio à Obra Papa João XXIII.%0A%0A*Nome:* ${nome}%0A*CPF/CNPJ:* ${cpf}%0A*Telefone:* ${telefone}%0A*Cidade:* ${cidade} - ${estado}%0A%0ASegue o comprovante do PIX.`;
-          const linkWhats = `https://wa.me/554432361231?text=${mensagem}`;
-          document.getElementById("whatsappLink").href = linkWhats;
-
-          document.getElementById("etapa1").style.display = "none";
-          document.getElementById("etapa2").style.display = "flex";
-          const sobreObra = document.querySelector(".sobre-obra-container");
-          if (sobreObra) sobreObra.style.display = "none";
-        });
-      }
-
-      const copyBtn = document.getElementById("copyPixBtn");
-      if (copyBtn) {
-        copyBtn.addEventListener("click", function () {
-          const pixKey = document.getElementById("pixKey").innerText;
-          navigator.clipboard.writeText(pixKey).then(() => {
-            const msg = document.getElementById("error-pix");
-            msg.innerText = "Chave PIX copiada!";
-            msg.style.color = "#28a745";
-            setTimeout(() => { msg.innerText = ""; }, 3000);
-          }).catch(() => {
-            const msg = document.getElementById("error-pix");
-            msg.innerText = "Erro ao copiar PIX.";
-            msg.style.color = "#d93025";
-          });
-        });
-      }
-    });
+  <script src="script.js" defer>
   </script>
 
 </body>

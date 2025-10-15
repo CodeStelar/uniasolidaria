@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
     ticketForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
-      // Captura os valores do formulário
       const nome = document.getElementById("nome").value.trim();
       const cpf = document.getElementById("cpf").value.trim();
       const telefone = document.getElementById("telefone").value.trim();
@@ -13,17 +12,10 @@ document.addEventListener("DOMContentLoaded", function() {
       const estado = document.getElementById("estado").value.toUpperCase();
       const quantidade = parseInt(document.getElementById("quantidade").value.trim(), 10) || 0;
 
-      // Limpa mensagens de erro
       document.querySelectorAll(".error-msg").forEach(el => el.innerText = "");
-
       let isValid = true;
+      function setError(id, message) { document.getElementById(id).innerText = message; isValid = false; }
 
-      function setError(id, message) {
-        document.getElementById(id).innerText = message;
-        isValid = false;
-      }
-
-      // Validações
       if (nome.length < 3) setError("error-nome", "Informe um nome válido.");
       if (!/^(\d{3}\.?\d{3}\.?\d{3}-?\d{2}|\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2})$/.test(cpf)) setError("error-cpf", "CPF/CNPJ inválido.");
       if (!/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/.test(telefone)) setError("error-telefone", "Telefone inválido.");
@@ -33,16 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
       if (!isValid) return;
 
-      // Calcula valor total
       const valorTotal = quantidade * 10;
       document.getElementById("valorTotal").innerText = valorTotal;
 
-      // Gera link do WhatsApp
       const mensagem = `Olá! Quero confirmar a compra de ${quantidade} cupom(ns) físicos no valor total de R$${valorTotal}, em apoio à Obra Papa João XXIII.%0A%0A*Nome:* ${nome}%0A*CPF/CNPJ:* ${cpf}%0A*Telefone:* ${telefone}%0A*Cidade:* ${cidade} - ${estado}%0A%0ASegue o comprovante do PIX.`;
       const linkWhats = `https://wa.me/554432361231?text=${mensagem}`;
       document.getElementById("whatsappLink").href = linkWhats;
 
-      // Mostra etapa 2
       document.getElementById("etapa1").style.display = "none";
       const etapa2 = document.getElementById("etapa2");
       etapa2.style.display = "flex";
@@ -70,6 +59,44 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
   }
+
+  // ===== Stepper de Quantidade (AGORA dentro do DOMContentLoaded) =====
+  const input = document.getElementById('quantidade');
+  const decBtn = document.getElementById('qtyDec');
+  const incBtn = document.getElementById('qtyInc');
+
+  if (input && decBtn && incBtn) {
+    const min = parseInt(input.getAttribute('min') || '1', 10);
+    const max = parseInt(input.getAttribute('max') || '50', 10);
+
+    const clamp = (n) => Math.min(max, Math.max(min, n));
+
+    const updateUI = () => {
+      const val = parseInt(input.value || '0', 10);
+      const atMin = val <= min;
+      const atMax = val >= max;
+      decBtn.classList.toggle('is-disabled', atMin);
+      incBtn.classList.toggle('is-disabled', atMax);
+      decBtn.disabled = atMin;
+      incBtn.disabled = atMax;
+    };
+
+    const setVal = (n) => { input.value = clamp(n); updateUI(); };
+
+    decBtn.addEventListener('click', () => setVal(parseInt(input.value||'0',10) - 1));
+    incBtn.addEventListener('click', () => setVal(parseInt(input.value||'0',10) + 1));
+
+    input.addEventListener('input', () => {
+      const num = parseInt(input.value.replace(/\D+/g,''),10);
+      input.value = isNaN(num) ? min : clamp(num);
+      updateUI();
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown'){ e.preventDefault(); setVal(parseInt(input.value||'0',10)-1); }
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp'){ e.preventDefault(); setVal(parseInt(input.value||'0',10)+1); }
+    });
+
+    updateUI();
+  }
 });
-
-
